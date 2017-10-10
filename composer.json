@@ -22,6 +22,6 @@
     "pear/http_request2": "^2.3"
   },
   "bin": [
-    "bin/selenium-server-standalone"
+    "bin/plantuml"
   ]
 }
