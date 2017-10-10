@@ -1,0 +1,13 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- `plantuml.jar` version `1.2017.18`.
+- Examples of PlantUML diagrams.
+- Initial project settings using `pds/skeleton`.
+- Reusing executable from [se/selenium-server-standalone](https://packagist.org/packages/se/selenium-server-standalone)

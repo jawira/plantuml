@@ -1,0 +1,27 @@
+{
+  "name": "jawira/plantuml",
+  "description": "Composer package to provide PlantUML integration",
+  "type": "library",
+  "license": "GPLv3",
+  "homepage": "https://github.com/jawira/plantuml",
+  "keywords": [
+    "plantuml",
+    "uml",
+    "diagram"
+  ],
+  "authors": [
+    {
+      "name": "Jawira Portugal"
+    }
+  ],
+  "require": {
+  },
+  "require-dev": {
+    "pds/skeleton": "^1.0",
+    "phing/phing": "^2.16",
+    "pear/http_request2": "^2.3"
+  },
+  "bin": [
+    "bin/selenium-server-standalone"
+  ]
+}
