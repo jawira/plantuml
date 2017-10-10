@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## v0.0.1 - 2017-10-10
+
+### Fixed
+- Update `composer.json`.
+
 ## v0.0.0 - 2017-10-10
 
 ### Added
