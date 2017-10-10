@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## v0.0.0 - 2017-10-10
+
 ### Added
 - `plantuml.jar` version `1.2017.18`.
 - Examples of PlantUML diagrams.
