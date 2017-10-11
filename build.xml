@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="PlantUML" description="Provides PlantUML integration" default="clean">
+
+    <!--Properties-->
+    <property file="build.properties"/>
+    <resolvepath propertyName="dir.output.absolute" file="${dir.output}"/>
+    <resolvepath propertyName="dir.input.absolute" file="${dir.input}"/>
+
+    <!--Testing jar-->
+    <target name="qa:jar" description="Generate diagrams with jar">
+        <mkdir dir="${dir.output.absolute}"/>
+        <exec executable="java" passthru="true">
+            <arg value="-jar"/>
+            <arg value="bin/plantuml.jar"/>
+            <arg value="-verbose"/>
+            <arg value="-o"/>
+            <arg value="${dir.output.absolute}"/>
+            <arg value="${dir.input.absolute}/*.puml"/>
+        </exec>
+
+    </target>
+
+    <!--Testing executable-->
+    <target name="qa:sh" description="Generate diagrams with executable">
+        <mkdir dir="${dir.output.absolute}"/>
+        <exec executable="bin/plantuml" passthru="true">
+            <arg value="-verbose"/>
+            <arg value="-o"/>
+            <arg value="${dir.output.absolute}"/>
+            <arg value="${dir.input.absolute}/*.puml"/>
+        </exec>
+    </target>
+
+    <!--Clean png files-->
+    <target name="qa:clean">
+        <delete dir="${dir.output.absolute}" failonerror="true" verbose="true"/>
+    </target>
+
+</project>

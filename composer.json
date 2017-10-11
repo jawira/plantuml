@@ -16,6 +16,7 @@
     }
   ],
   "require": {
+    "phing/phing": "^2.16"
   },
   "require-dev": {
     "pds/skeleton": "^1.0"
