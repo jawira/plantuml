@@ -10,6 +10,9 @@ Install
 
 To install execute:
 
+```sh
+$ composer require jawira/plantuml
+```
 
 
 Usage
