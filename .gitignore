@@ -1,2 +1,6 @@
-/.idea/
-/vendor/
+.idea/
+resources/output/
+resources/plantuml-code/
+resources/tmp/
+vendor/
+build.properties

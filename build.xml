@@ -1,16 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="PlantUML" description="Provides PlantUML integration" default="clean">
+<project name="PlantUML" description="Provides PlantUML integration" default="help">
 
     <!--Properties-->
     <property file="build.properties"/>
     <resolvepath propertyName="dir.output.absolute" file="${dir.output}"/>
     <resolvepath propertyName="dir.input.absolute" file="${dir.input}"/>
+    <resolvepath propertyName="dir.svn.absolute" file="${dir.svn}"/>
+    <resolvepath propertyName="dir.tmp.absolute" file="${dir.tmp}"/>
 
-    <!--Testing jar-->
-    <target name="qa:jar" description="Generate diagrams with jar">
+
+    <!--Basic help-->
+    <target name="help">
+        <echo>
+            Target: compile
+            Downloads PlantUML source code and compiles it to build a
+            new plantuml.jar file.
+
+            Target: test
+            Tests plantuml executable and plantuml.jar.
+        </echo>
+    </target>
+
+
+    <!--Compile plantuml.jar-->
+    <target name="compile" description="Download source code and compile plantuml.jar">
+        <mkdir dir="${dir.svn.absolute}"/>
+        <svncheckout repositoryurl="${svn.repository}" todir="${dir.svn.absolute}"
+                     username="${svn.username}" password="${svn.password}"/>
+        <exec executable="ant" passthru="true">
+            <arg value="-buildfile"/>
+            <arg value="${dir.svn.absolute}/build.xml"/>
+            <arg value="dist"/>
+        </exec>
+        <copy file="${dir.svn.absolute}/plantuml.jar" todir="bin"/>
+    </target>
+
+    <target name="test" depends="test:jar, test:sh" description="Runs all tests"/>
+
+    <target name="test:jar" description="Check the correct functioning of plantuml.jar">
+        <phingcall target="test:clean"/>
+        <phingcall target="test:run-jar"/>
+        <phingcall target="test:validate-output"/>
+    </target>
+
+    <target name="test:sh" description="Check the correct functioning of plantuml executable">
+        <phingcall target="test:clean"/>
+        <phingcall target="test:run-sh"/>
+        <phingcall target="test:validate-output"/>
+    </target>
+
+    <!--Testing plantuml.jar-->
+    <target name="test:run-jar" description="Generates .png files with plantuml.jar">
         <mkdir dir="${dir.output.absolute}"/>
-        <exec executable="java" passthru="true">
+        <exec executable="java" passthru="true" checkreturn="true">
             <arg value="-jar"/>
             <arg value="bin/plantuml.jar"/>
             <arg value="-verbose"/>
@@ -18,13 +61,13 @@
             <arg value="${dir.output.absolute}"/>
             <arg value="${dir.input.absolute}/*.puml"/>
         </exec>
-
     </target>
 
+
     <!--Testing executable-->
-    <target name="qa:sh" description="Generate diagrams with executable">
+    <target name="test:run-sh" description="Generates .png files with plantuml executable">
         <mkdir dir="${dir.output.absolute}"/>
-        <exec executable="bin/plantuml" passthru="true">
+        <exec executable="bin/plantuml" passthru="true" checkreturn="true">
             <arg value="-verbose"/>
             <arg value="-o"/>
             <arg value="${dir.output.absolute}"/>
@@ -32,9 +75,54 @@
         </exec>
     </target>
 
+
     <!--Clean png files-->
-    <target name="qa:clean">
-        <delete dir="${dir.output.absolute}" failonerror="true" verbose="true"/>
+    <target name="test:clean" description="Deletes output dir">
+        <delete dir="${dir.output.absolute}" verbose="true"/>
+    </target>
+
+
+    <!--Checks png files exists-->
+    <target name="test:validate-output" description="Verifies the existence of .png files">
+        <mkdir dir="${dir.tmp.absolute}"/>
+
+        <!--Create manifest file-->
+        <manifest file="${dir.tmp.absolute}/expected-output.txt">
+            <fileset dir="${dir.input.absolute}">
+                <include name="*.puml"/>
+            </fileset>
+        </manifest>
+
+        <!--Replace extensions in manifest file-->
+        <reflexive>
+            <fileset dir="${dir.tmp.absolute}">
+                <include name="expected-output.txt"/>
+            </fileset>
+            <filterchain>
+                <replaceregexp>
+                    <regexp pattern="\.puml" replace=".png" ignoreCase="true"/>
+                </replaceregexp>
+            </filterchain>
+        </reflexive>
+
+        <!--Checking files existence-->
+        <foreach target="test:file-check" param="filename" absparam="filename.absolute">
+            <filelist dir="${dir.output.absolute}" listfile="${dir.tmp.absolute}/expected-output.txt"/>
+        </foreach>
+    </target>
+
+
+    <!--Helper target, fails if file isn't found-->
+    <target name="test:file-check" description="Fails if file is not available" hidden="true">
+        <if>
+            <available file="${filename.absolute}"/>
+            <then>
+                <echo message="OK: ${filename}"/>
+            </then>
+            <else>
+                <fail message="NOT FOUND: ${filename.absolute}"/>
+            </else>
+        </if>
     </target>
 
 </project>

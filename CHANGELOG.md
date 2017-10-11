@@ -9,14 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]
 -----------
 ### Added
-- Cool icons in readme file.
-- Requirements in readme file.
-- [checkversion.puml](./resources/examples/checkversion.puml)
+- Phing: compilation and testing of plantuml.jar. 
+- [PlantUML diagrams](./resources/puml) for testing purposes.
+- Requirements, PlantUML version and cool icons in [readme file](README.md).
+- Some notes in [./docs/]() folder.
 
 ### Removed
 - Remove unused dependencies from `composer.json`.
 - Install instructions in readme file.
-
+- build.properties isn't versioned anymore.
 
 v0.0.2 - 2017-10-10
 -------------------

@@ -16,10 +16,10 @@
     }
   ],
   "require": {
-    "phing/phing": "^2.16"
   },
   "require-dev": {
-    "pds/skeleton": "^1.0"
+    "phing/phing": "^2.16",
+    "pear/versioncontrol_svn": "^0.5.2"
   },
   "bin": [
     "bin/plantuml"

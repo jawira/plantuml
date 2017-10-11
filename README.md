@@ -5,6 +5,8 @@ PlantUML integration
 
 Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
+PlantUML version **1.2017.18**
+
 Install
 -------
 
