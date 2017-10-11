@@ -3,7 +3,7 @@ PlantUML integration
 
 [![Latest Stable Version](https://poser.pugx.org/jawira/plantuml/v/stable)](https://packagist.org/packages/jawira/plantuml) [![Total Downloads](https://poser.pugx.org/jawira/plantuml/downloads)](https://packagist.org/packages/jawira/plantuml) [![License](https://poser.pugx.org/jawira/plantuml/license)](https://packagist.org/packages/jawira/plantuml)
 
-Provides PlantUML integration: **plantuml executable** and **plantuml.jar**.
+Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
 Install
 -------
@@ -18,16 +18,24 @@ $ composer require jawira/plantuml
 Usage
 -----
 
-Check that PlantUML is correctly installed:
+Check that PlantUML is working correctly:
 
 ```sh
 $ vendor/bin/plantuml -version
 ```
 
-You also get access to `plantuml.jar`:
+To generate a diagram:
 
 ```sh
-$ java -jar vendor/jawira/plantuml/bin/plantuml.jar -version
+$ vendor/bin/plantuml /path/to/file.puml
+```
+
+Png image is created in same location.
+
+You also get access to **plantuml.jar**:
+
+```sh
+$ java -jar ./vendor/jawira/plantuml/bin/plantuml.jar -version
 ```
 
 Requirements
