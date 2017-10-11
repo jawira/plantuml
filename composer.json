@@ -1,11 +1,12 @@
 {
   "name": "jawira/plantuml",
-  "description": "Composer package to provide PlantUML integration",
+  "description": "Provides PlantUML integration: plantuml executable and plantuml.jar",
   "type": "library",
   "license": "GPLv3",
   "homepage": "https://github.com/jawira/plantuml",
   "keywords": [
     "plantuml",
+    "plantuml.jar",
     "uml",
     "diagram"
   ],
@@ -17,9 +18,7 @@
   "require": {
   },
   "require-dev": {
-    "pds/skeleton": "^1.0",
-    "phing/phing": "^2.16",
-    "pear/http_request2": "^2.3"
+    "pds/skeleton": "^1.0"
   },
   "bin": [
     "bin/plantuml"
