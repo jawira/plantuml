@@ -13,13 +13,27 @@
     <!--Basic help-->
     <target name="help">
         <echo>
-            Target: compile
-            Downloads PlantUML source code and compiles it to build a
-            new plantuml.jar file.
+            Target: init
+            Generates build.properties file.
 
             Target: test
             Tests plantuml executable and plantuml.jar.
+
+            Target: compile
+            Downloads PlantUML source code and compiles it to build a
+            new plantuml.jar file.
         </echo>
+    </target>
+
+
+    <!--Generate build.properties-->
+    <target name="init" description="Wizard to create build.properties">
+        <input message="SVN username" propertyName="tmp.username" promptChar=":"/>
+        <input message="SVN password" propertyName="tmp.password" promptChar=":"/>
+        <inifile source="build.properties.dist" dest="build.properties">
+            <set section="svn" property="svn.username" value="${tmp.username}"/>
+            <set section="svn" property="svn.password" value="${tmp.password}"/>
+        </inifile>
     </target>
 
 
