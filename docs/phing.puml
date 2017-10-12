@@ -3,18 +3,19 @@ title Phing targets
 skinparam defaultFontName Helvetica
 skinparam arrowFontColor Grey
 
+(init)
 (compile)
 (help)
 
-(test) --> (test:jar) : depends 1
-(test) --> (test:sh) : depends 2
+(test) --> (test:jar) : depend:1
+(test) --> (test:sh) : depend:2
 
-(test:jar) --> (test:clean) : call 1
-(test:jar) --> (test:run-jar) : call 2
-(test:jar) --> (test:validate-output) : call 3
+(test:jar) --> (test:clean) : call:1
+(test:jar) --> (test:run-jar) : call:2
+(test:jar) --> (test:validate-output) : call:3
 
-(test:sh) --> (test:clean) : call 1
-(test:sh) --> (test:run-sh) : call 2
-(test:sh) --> (test:validate-output) : call 3
+(test:sh) --> (test:clean) : call:1
+(test:sh) --> (test:run-sh) : call:2
+(test:sh) --> (test:validate-output) : call:3
 
 @enduml

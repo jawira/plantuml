@@ -27,7 +27,7 @@
 
 
     <!--Generate build.properties-->
-    <target name="init" description="Initialize project">
+    <target name="init" description="Wizard to create build.properties">
         <input message="SVN username" propertyName="tmp.username" promptChar=":"/>
         <input message="SVN password" propertyName="tmp.password" promptChar=":"/>
         <inifile source="build.properties.dist" dest="build.properties">
