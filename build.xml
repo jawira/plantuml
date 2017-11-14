@@ -3,7 +3,7 @@
 <project name="PlantUML" description="Provides PlantUML integration" default="help">
 
     <!--Properties-->
-    <property file="build.properties"/>
+    <property file="build.properties.ini"/>
     <resolvepath propertyName="dir.output.absolute" file="${dir.output}"/>
     <resolvepath propertyName="dir.input.absolute" file="${dir.input}"/>
     <resolvepath propertyName="dir.svn.absolute" file="${dir.svn}"/>
