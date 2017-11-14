@@ -5,7 +5,7 @@ PlantUML integration
 
 Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
-PlantUML version **1.2017.18**
+PlantUML version **1.2017.19**
 
 Install
 -------
@@ -15,7 +15,6 @@ To install execute:
 ```sh
 $ composer require jawira/plantuml
 ```
-
 
 Usage
 -----
@@ -32,7 +31,7 @@ To generate a diagram:
 $ vendor/bin/plantuml /path/to/file.puml
 ```
 
-Png image is created in same location.
+By default *png* image is created in same location as *puml* file.
 
 You also get access to **plantuml.jar**:
 
