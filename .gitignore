@@ -3,4 +3,4 @@ resources/output/
 resources/plantuml-code/
 resources/tmp/
 vendor/
-build.properties
+build.properties.ini
