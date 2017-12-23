@@ -10,7 +10,7 @@ PlantUML version **1.2017.19**
 Install
 -------
 
-To install execute:
+Install using Composer:
 
 ```sh
 $ composer require jawira/plantuml
