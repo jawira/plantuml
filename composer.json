@@ -15,9 +15,7 @@
       "name": "Jawira Portugal"
     }
   ],
-  "require": {
-  },
-  "require-dev": {
+  "suggest": {
     "phing/phing": "^2.16",
     "pear/versioncontrol_svn": "^0.5.2"
   },
