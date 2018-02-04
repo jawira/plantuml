@@ -2,7 +2,7 @@
   "name": "jawira/plantuml",
   "description": "Provides PlantUML integration: plantuml executable and plantuml.jar",
   "type": "library",
-  "license": "GPLv3",
+  "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/jawira/plantuml",
   "keywords": [
     "plantuml",
@@ -16,8 +16,8 @@
     }
   ],
   "suggest": {
-    "phing/phing": "^2.16",
-    "pear/versioncontrol_svn": "^0.5.2"
+    "phing/phing": "Phing is a PHP project build system or build tool based on ​Apache Ant",
+    "pear/versioncontrol_svn": "VersionControl_SVN is a simple OO-style interface for Subversion"
   },
   "bin": [
     "bin/plantuml"
