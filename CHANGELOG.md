@@ -9,42 +9,60 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]
 -----------
 
+v1.1.2 - 2018-02-04
+-------------------
+
+### Fixed
+
+- Valid license (from https://spdx.org/licenses/) in composer.json
+
+
 v1.1.1 - 2017-12-25
 -------------------
 
 ### Fixed
+
 - PlantUML version in [README.md]() file
+
 
 v1.1.0 - 2017-12-23
 -------------------
 
 ### Changed
+
 - PlantUML version 1.2017.20
+
 
 v1.0.0 - 2017-11-14
 -------------------
 
 ### Changed
+
 - PlantUML version 1.2017.19
+
 
 v0.1.0 - 2017-10-12 
 -------------------
 
 ### Added
+
 - Phing: compilation and testing of plantuml.jar. 
 - [PlantUML diagrams](./resources/puml) for testing purposes.
 - Requirements, PlantUML version and cool icons in [readme file](README.md).
 - Some notes in [./docs/]() folder.
 
 ### Removed
+
 - Remove unused dependencies from `composer.json`.
 - Install instructions in readme file.
 - build.properties isn't versioned anymore.
+
 
 v0.0.2 - 2017-10-10
 -------------------
 
 ### Added
+
 - Add install instructions to readme file.
 
 
@@ -52,6 +70,7 @@ v0.0.1 - 2017-10-10
 -------------------
 
 ### Fixed
+
 - Update `composer.json`.
 
 
