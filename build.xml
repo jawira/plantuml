@@ -6,7 +6,6 @@
     <property file="build.properties.ini"/>
     <resolvepath propertyName="dir.output.absolute" file="${dir.output}"/>
     <resolvepath propertyName="dir.input.absolute" file="${dir.input}"/>
-    <resolvepath propertyName="dir.svn.absolute" file="${dir.svn}"/>
     <resolvepath propertyName="dir.tmp.absolute" file="${dir.tmp}"/>
 
 
@@ -14,58 +13,76 @@
     <target name="help">
         <echo>
             Target: init
-            Generates build.properties file.
+            Generates build.properties file
 
             Target: test
-            Tests plantuml executable and plantuml.jar.
+            Tests plantuml executable and plantuml.jar
 
-            Target: compile
-            Downloads PlantUML source code and compiles it to build a
-            new plantuml.jar file.
+            Target: jar:update
+            Downloads last version of plantuml.jar
         </echo>
     </target>
 
 
     <!--Generate build.properties-->
     <target name="init" description="Wizard to create build.properties">
-        <input message="SVN username" propertyName="tmp.username" promptChar=":"/>
-        <input message="SVN password" propertyName="tmp.password" promptChar=":"/>
-        <inifile source="build.properties.dist" dest="build.properties">
-            <set section="svn" property="svn.username" value="${tmp.username}"/>
-            <set section="svn" property="svn.password" value="${tmp.password}"/>
-        </inifile>
+        <inifile source="build.properties.ini.dist" dest="build.properties.ini"/>
     </target>
 
+    <!--Update bin/plantuml.jar-->
+    <target name="jar:update" depends="jar:rm, jar:download"/>
 
-    <!--Compile plantuml.jar-->
-    <target name="compile" description="Download source code and compile plantuml.jar">
-        <mkdir dir="${dir.svn.absolute}"/>
-        <svncheckout repositoryurl="${svn.repository}" todir="${dir.svn.absolute}"
-                     username="${svn.username}" password="${svn.password}"/>
-        <exec executable="ant" passthru="true">
-            <arg value="-buildfile"/>
-            <arg value="${dir.svn.absolute}/build.xml"/>
-            <arg value="dist"/>
+    <!--Delete bin/plantuml.jar-->
+    <target name="jar:rm" description="Delete bin/plantuml.jar">
+        <delete file="bin/plantuml.jar"/>
+    </target>
+
+    <!--Download bin/plantuml.jar-->
+    <target name="jar:download">
+        <httpget dir="bin"
+                 url="https://sourceforge.net/projects/plantuml/files/latest/download?source=typ_redirect"
+                 followRedirects="true"
+                 filename="plantuml.jar"/>
+    </target>
+
+    <!--${plantuml.version}-->
+    <target name="jar:version">
+        <exec executable="bin/plantuml" outputProperty="plantuml.output">
+            <arg value="-v"/>
         </exec>
-        <copy file="${dir.svn.absolute}/plantuml.jar" todir="bin"/>
+        <propertyregex property="plantuml.version"
+                       pattern="\bPlantUML Version \d+\.\d+\.\d+\b"
+                       subject="${plantuml.output}"
+                       match="$0"
+                       defaultvalue="-"
+                       override="true"/>
+        <echo message="${plantuml.version}"/>
     </target>
 
-    <target name="test" depends="test:jar, test:sh" description="Runs all tests"/>
+    <!--resources/plantuml.version.txt-->
+    <target name="jar:version-save"
+            description="Saves current PlantUML version in text file"
+            depends="jar:version">
+        <echo message="${plantuml.version}" file="./resources/plantuml.version.txt"/>
+        <notifysend title="Phing" msg="${plantuml.version}" icon="info"/>
+    </target>
 
-    <target name="test:jar" description="Check the correct functioning of plantuml.jar">
+    <target name="test" depends="jar:test, executable:test" description="Runs all tests"/>
+
+    <target name="jar:test" description="Check the correct functioning of plantuml.jar">
         <phingcall target="test:clean"/>
-        <phingcall target="test:run-jar"/>
+        <phingcall target="jar:run"/>
         <phingcall target="test:validate-output"/>
     </target>
 
-    <target name="test:sh" description="Check the correct functioning of plantuml executable">
+    <target name="executable:test" description="Check the correct functioning of plantuml executable">
         <phingcall target="test:clean"/>
-        <phingcall target="test:run-sh"/>
+        <phingcall target="executable:run"/>
         <phingcall target="test:validate-output"/>
     </target>
 
     <!--Testing plantuml.jar-->
-    <target name="test:run-jar" description="Generates .png files with plantuml.jar">
+    <target name="jar:run" description="Generates .png files with plantuml.jar">
         <mkdir dir="${dir.output.absolute}"/>
         <exec executable="java" passthru="true" checkreturn="true">
             <arg value="-jar"/>
@@ -79,7 +96,7 @@
 
 
     <!--Testing executable-->
-    <target name="test:run-sh" description="Generates .png files with plantuml executable">
+    <target name="executable:run" description="Generates .png files with plantuml executable">
         <mkdir dir="${dir.output.absolute}"/>
         <exec executable="bin/plantuml" passthru="true" checkreturn="true">
             <arg value="-verbose"/>
@@ -127,7 +144,7 @@
 
 
     <!--Helper target, fails if file isn't found-->
-    <target name="test:file-check" description="Fails if file is not available" hidden="true">
+    <target name="test:file-check" hidden="true">
         <if>
             <available file="${filename.absolute}"/>
             <then>

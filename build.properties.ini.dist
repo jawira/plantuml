@@ -1,10 +1,4 @@
 [dirs]
 dir.input=./resources/puml/
 dir.output=./resources/output/
-dir.svn=./resources/plantuml-code/
 dir.tmp=./resources/tmp/
-
-[svn]
-svn.repository=https://svn.code.sf.net/p/plantuml/code/trunk@766
-svn.username=username
-svn.password=password

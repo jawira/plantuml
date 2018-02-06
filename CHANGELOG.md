@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]
 -----------
 
+### Changed
+
+- Jar's update procedure has been simplified
+
+
 v1.1.2 - 2018-02-04
 -------------------
 
@@ -82,3 +87,14 @@ v0.0.0 - 2017-10-10
 - Examples of PlantUML diagrams.
 - Initial project settings using `pds/skeleton`.
 - Reusing executable from [se/selenium-server-standalone](https://packagist.org/packages/se/selenium-server-standalone)
+
+
+
+<!--
+    Added       for new features.
+    Changed     for changes in existing functionality.
+    Deprecated  for soon-to-be removed features.
+    Removed     for now removed features.
+    Fixed       for any bug fixes.
+    Security    in case of vulnerabilities.
+-->
