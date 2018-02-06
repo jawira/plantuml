@@ -16,8 +16,7 @@
     }
   ],
   "suggest": {
-    "phing/phing": "Phing is a PHP project build system or build tool based on ​Apache Ant",
-    "pear/versioncontrol_svn": "VersionControl_SVN is a simple OO-style interface for Subversion"
+    "phing/phing": "To update and test plantuml.jar"
   },
   "bin": [
     "bin/plantuml"

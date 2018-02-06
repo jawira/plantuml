@@ -1,11 +1,16 @@
 PlantUML integration
 ====================
 
-[![Latest Stable Version](https://poser.pugx.org/jawira/plantuml/v/stable)](https://packagist.org/packages/jawira/plantuml) [![Total Downloads](https://poser.pugx.org/jawira/plantuml/downloads)](https://packagist.org/packages/jawira/plantuml) [![License](https://poser.pugx.org/jawira/plantuml/license)](https://packagist.org/packages/jawira/plantuml)
-
 Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
+<!--version-start-->
 PlantUML version **1.2017.20**
+<!--version-end-->
+
+[![Latest Stable Version](https://poser.pugx.org/jawira/plantuml/v/stable)](https://packagist.org/packages/jawira/plantuml) 
+[![Total Downloads](https://poser.pugx.org/jawira/plantuml/downloads)](https://packagist.org/packages/jawira/plantuml) 
+[![License](https://poser.pugx.org/jawira/plantuml/license)](https://packagist.org/packages/jawira/plantuml)
+[![composer.lock](https://poser.pugx.org/jawira/plantuml/composerlock)](https://packagist.org/packages/jawira/plantuml)
 
 Install
 -------
@@ -46,4 +51,5 @@ PlantUML needs **Java Runtime** and **Graphviz** installed (see <http://plantuml
 
 Useful links
 ------------
-  * [PlantUML Language Reference Guide](http://plantuml.com/PlantUML_Language_Reference_Guide.pdf)
+
+* [PlantUML Language Reference Guide](http://plantuml.com/PlantUML_Language_Reference_Guide.pdf)

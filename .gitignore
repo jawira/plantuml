@@ -4,3 +4,4 @@ resources/plantuml-code/
 resources/tmp/
 vendor/
 build.properties.ini
+composer.lock
