@@ -16,7 +16,8 @@
     }
   ],
   "suggest": {
-    "phing/phing": "To update and test plantuml.jar"
+    "phing/phing": "To update and test plantuml.jar",
+    "pds/skeleton": "Generates basic project structure"
   },
   "bin": [
     "bin/plantuml"

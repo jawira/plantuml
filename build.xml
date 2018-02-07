@@ -7,6 +7,7 @@
     <resolvepath propertyName="dir.output.absolute" file="${dir.output}"/>
     <resolvepath propertyName="dir.input.absolute" file="${dir.input}"/>
     <resolvepath propertyName="dir.tmp.absolute" file="${dir.tmp}"/>
+    <property name="plantuml.version.location" value="./resources/plantuml.version.txt"/>
 
 
     <!--Basic help-->
@@ -29,24 +30,41 @@
         <inifile source="build.properties.ini.dist" dest="build.properties.ini"/>
     </target>
 
-    <!--Update bin/plantuml.jar-->
-    <target name="jar:update" depends="jar:rm, jar:download"/>
 
-    <!--Delete bin/plantuml.jar-->
-    <target name="jar:rm" description="Delete bin/plantuml.jar">
-        <delete file="bin/plantuml.jar"/>
+    <!--Update bin/plantuml.jar-->
+    <target name="jar:update"
+            depends="jar:download, jar:update-readme, test"
+            description="Update project with latest version of PlantUML"/>
+
+
+    <!--Update README.md-->
+    <target name="jar:update-readme"
+            description="Sets current PlantUML version in README.md"
+            depends="jar:save-version">
+        <copy file="./README.md" tofile="${dir.tmp.absolute}/README.md" overwrite="true">
+            <filterchain>
+                <replaceregexp>
+                    <regexp pattern="&lt;!--start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--end--&gt;"
+                            replace="&lt;!--start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--end--&gt;"/>
+                </replaceregexp>
+            </filterchain>
+        </copy>
+        <move file="${dir.tmp.absolute}/README.md" tofile="./README.md"/>
     </target>
 
+
     <!--Download bin/plantuml.jar-->
-    <target name="jar:download">
+    <target name="jar:download" description="Download latest version of PlantUML">
+        <delete file="bin/plantuml.jar"/>
         <httpget dir="bin"
                  url="https://sourceforge.net/projects/plantuml/files/latest/download?source=typ_redirect"
                  followRedirects="true"
                  filename="plantuml.jar"/>
     </target>
 
+
     <!--${plantuml.version}-->
-    <target name="jar:version">
+    <target name="jar:version" description="Prints PlantUML version">
         <exec executable="bin/plantuml" outputProperty="plantuml.output">
             <arg value="-v"/>
         </exec>
@@ -59,29 +77,37 @@
         <echo message="${plantuml.version}"/>
     </target>
 
+
     <!--resources/plantuml.version.txt-->
-    <target name="jar:version-save"
+    <target name="jar:save-version"
             description="Saves current PlantUML version in text file"
             depends="jar:version">
-        <echo message="${plantuml.version}" file="./resources/plantuml.version.txt"/>
+        <echo message="${plantuml.version}" file="${plantuml.version.location}"/>
         <notifysend title="Phing" msg="${plantuml.version}" icon="info"/>
     </target>
 
+
+    <!--Test plantuml.jar and executable-->
     <target name="test" depends="jar:test, executable:test" description="Runs all tests"/>
 
+
+    <!--Test plantuml.jar-->
     <target name="jar:test" description="Check the correct functioning of plantuml.jar">
         <phingcall target="test:clean"/>
         <phingcall target="jar:run"/>
         <phingcall target="test:validate-output"/>
     </target>
 
+
+    <!--Test bin/plantuml-->
     <target name="executable:test" description="Check the correct functioning of plantuml executable">
         <phingcall target="test:clean"/>
         <phingcall target="executable:run"/>
         <phingcall target="test:validate-output"/>
     </target>
 
-    <!--Testing plantuml.jar-->
+
+    <!--Execute plantuml.jar-->
     <target name="jar:run" description="Generates .png files with plantuml.jar">
         <mkdir dir="${dir.output.absolute}"/>
         <exec executable="java" passthru="true" checkreturn="true">
@@ -154,6 +180,11 @@
                 <fail message="NOT FOUND: ${filename.absolute}"/>
             </else>
         </if>
+    </target>
+
+
+    <target name="properties">
+        <echoproperties/>
     </target>
 
 </project>
