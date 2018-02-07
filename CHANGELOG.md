@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]
 -----------
 
+v1.1.4 - 2018-02-07
+-------------------
+
 ### Changed
 
 - Readme file is automatically updated when downloading `plantuml.jar` lasts version
