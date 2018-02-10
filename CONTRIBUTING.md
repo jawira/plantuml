@@ -1,7 +1,7 @@
 How to contribute
 =================
 
-Contributions in the form of **✏Issues** and **🛠Pull requests** are welcomed and encouraged.
+Contributions in the form of **✍Issues** and **🛠Pull requests** are welcomed and encouraged.
 
 This project adheres to:
 
