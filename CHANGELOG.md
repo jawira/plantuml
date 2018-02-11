@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ------------
 
 
+v1.2.1 - 2018-02-11
+-------------------
+
+### Added 
+
+- Created [.gitattributes](./.gitattributes) file to exclude unnecessary files for Composer. 
+
+### Changed 
+
+- Enhanced [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 v1.2.0 - 2018-02-09
 -------------------
 
