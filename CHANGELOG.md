@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]
 ------------
 
+### Changed
+
+- [./.gitattributes]() was refactored to increase readability. 
 
 v1.2.1 - 2018-02-11
 -------------------
