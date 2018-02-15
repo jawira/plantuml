@@ -12,13 +12,13 @@
     <!--Basic help-->
     <target name="help">
         <echo>
-            Target: test
-            Tests plantuml executable and plantuml.jar
-
-            Target: update
-            Downloads last version of plantuml.jar
+            Targets:
+            $ phing test    # Tests bin/plantuml and bin/plantuml.jar
+            $ phing update  # Download to last version of PlantUML
+            $ phing -l      # Full list of targets
         </echo>
     </target>
+
 
     <!--Update bin/plantuml.jar-->
     <target name="update"
