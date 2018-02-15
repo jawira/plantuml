@@ -22,23 +22,22 @@
 
     <!--Update bin/plantuml.jar-->
     <target name="update"
-            depends="jar:update, jar:update-readme, test"
+            depends="jar:update, test, readme:update"
             description="Update project with latest version of PlantUML"/>
 
 
     <!--Update README.md-->
-    <target name="jar:update-readme"
+    <target name="readme:update"
             description="Sets current PlantUML version in README.md"
             depends="jar:save-version">
-        <copy file="./README.md" tofile="${dir.tmp}/README.md" overwrite="true">
+        <reflexive file="./README.md">
             <filterchain>
                 <replaceregexp>
                     <regexp pattern="&lt;!--start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--end--&gt;"
                             replace="&lt;!--start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--end--&gt;"/>
                 </replaceregexp>
             </filterchain>
-        </copy>
-        <move file="${dir.tmp}/README.md" tofile="./README.md"/>
+        </reflexive>
     </target>
 
 
@@ -84,7 +83,7 @@
     <target name="jar:test" description="Check the correct functioning of plantuml.jar">
         <phingcall target="test:clean"/>
         <phingcall target="jar:run"/>
-        <phingcall target="test:validate-output"/>
+        <phingcall target="test:validate"/>
     </target>
 
 
@@ -92,7 +91,7 @@
     <target name="executable:test" description="Check the correct functioning of plantuml executable">
         <phingcall target="test:clean"/>
         <phingcall target="executable:run"/>
-        <phingcall target="test:validate-output"/>
+        <phingcall target="test:validate"/>
     </target>
 
 
@@ -129,31 +128,11 @@
 
 
     <!--Checks png files exists-->
-    <target name="test:validate-output" description="Verifies the existence of .png files">
-        <mkdir dir="${dir.tmp}"/>
-
-        <!--Create manifest file-->
-        <manifest file="${dir.tmp}/expected-output.txt">
-            <fileset dir="${dir.input}">
-                <include name="*.puml"/>
-            </fileset>
-        </manifest>
-
-        <!--Replace extensions in manifest file-->
-        <reflexive>
-            <fileset dir="${dir.tmp}">
-                <include name="expected-output.txt"/>
-            </fileset>
-            <filterchain>
-                <replaceregexp>
-                    <regexp pattern="\.puml" replace=".png" ignoreCase="true"/>
-                </replaceregexp>
-            </filterchain>
-        </reflexive>
-
-        <!--Checking files existence-->
+    <target name="test:validate" description="Verifies the existence of .png files">
         <foreach target="test:file-check" param="filename" absparam="filename.absolute">
-            <filelist dir="${dir.output}" listfile="${dir.tmp}/expected-output.txt"/>
+            <filelist
+            dir="${dir.output}"
+            files="colors.png, colors-azure.png, sequence-diagram.png, testdot.png, version.png"/>
         </foreach>
     </target>
 
@@ -163,7 +142,7 @@
         <if>
             <available file="${filename.absolute}"/>
             <then>
-                <echo message="OK: ${filename}"/>
+                <echo message="OK: ${filename.absolute}"/>
             </then>
             <else>
                 <fail message="NOT FOUND: ${filename.absolute}"/>
@@ -172,8 +151,8 @@
     </target>
 
 
-    <target name="properties">
-        <echoproperties/>
+    <target name="diagnostics">
+        <diagnostics/>
     </target>
 
 </project>
