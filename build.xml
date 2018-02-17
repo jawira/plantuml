@@ -13,9 +13,10 @@
     <target name="help">
         <echo>
             Targets:
-            $ phing test    # Tests bin/plantuml and bin/plantuml.jar
-            $ phing update  # Download to last version of PlantUML
-            $ phing -l      # Full list of targets
+            $ phing test        # Tests bin/plantuml and bin/plantuml.jar
+            $ phing update      # Download to last version of PlantUML
+            $ phing -l          # Full list of targets
+            $ phing diagnostics # Useful info to run in IDE
         </echo>
     </target>
 
@@ -130,9 +131,8 @@
     <!--Checks png files exists-->
     <target name="test:validate" description="Verifies the existence of .png files">
         <foreach target="test:file-check" param="filename" absparam="filename.absolute">
-            <filelist
-            dir="${dir.output}"
-            files="colors.png, colors-azure.png, sequence-diagram.png, testdot.png, version.png"/>
+            <filelist dir="${dir.output}"
+                      files="colors.png, colors-azure.png, sequence-diagram.png, testdot.png, version.png"/>
         </foreach>
     </target>
 
