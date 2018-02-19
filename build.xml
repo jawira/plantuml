@@ -3,58 +3,47 @@
 <project name="PlantUML" description="Provides PlantUML integration" default="help">
 
     <!--Properties-->
-    <property file="build.properties.ini"/>
-    <resolvepath propertyName="dir.output.absolute" file="${dir.output}"/>
-    <resolvepath propertyName="dir.input.absolute" file="${dir.input}"/>
-    <resolvepath propertyName="dir.tmp.absolute" file="${dir.tmp}"/>
-    <property name="plantuml.version.location" value="./resources/plantuml.version.txt"/>
+    <resolvepath propertyName="dir.output" path="./resources/output/"/>
+    <resolvepath propertyName="dir.input" path="./resources/puml/"/>
+    <resolvepath propertyName="dir.tmp" path="./resources/tmp/"/>
+    <property name="file.version" value="./resources/plantuml.version.txt"/>
 
 
     <!--Basic help-->
     <target name="help">
         <echo>
-            Target: init
-            Generates build.properties file
-
-            Target: test
-            Tests plantuml executable and plantuml.jar
-
-            Target: jar:update
-            Downloads last version of plantuml.jar
+            Targets:
+            $ phing test        # Tests bin/plantuml and bin/plantuml.jar
+            $ phing update      # Download to last version of PlantUML
+            $ phing -l          # Full list of targets
+            $ phing diagnostics # Useful info to run in IDE
         </echo>
     </target>
 
 
-    <!--Generate build.properties-->
-    <target name="init" description="Wizard to create build.properties">
-        <inifile source="build.properties.ini.dist" dest="build.properties.ini"/>
-    </target>
-
-
     <!--Update bin/plantuml.jar-->
-    <target name="jar:update"
-            depends="jar:download, jar:update-readme, test"
+    <target name="update"
+            depends="jar:update, test, readme:update"
             description="Update project with latest version of PlantUML"/>
 
 
     <!--Update README.md-->
-    <target name="jar:update-readme"
+    <target name="readme:update"
             description="Sets current PlantUML version in README.md"
             depends="jar:save-version">
-        <copy file="./README.md" tofile="${dir.tmp.absolute}/README.md" overwrite="true">
+        <reflexive file="./README.md">
             <filterchain>
                 <replaceregexp>
                     <regexp pattern="&lt;!--start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--end--&gt;"
                             replace="&lt;!--start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--end--&gt;"/>
                 </replaceregexp>
             </filterchain>
-        </copy>
-        <move file="${dir.tmp.absolute}/README.md" tofile="./README.md"/>
+        </reflexive>
     </target>
 
 
     <!--Download bin/plantuml.jar-->
-    <target name="jar:download" description="Download latest version of PlantUML">
+    <target name="jar:update" description="Download latest version of PlantUML">
         <delete file="bin/plantuml.jar"/>
         <httpget dir="bin"
                  url="https://sourceforge.net/projects/plantuml/files/latest/download?source=typ_redirect"
@@ -82,7 +71,7 @@
     <target name="jar:save-version"
             description="Saves current PlantUML version in text file"
             depends="jar:version">
-        <echo message="${plantuml.version}" file="${plantuml.version.location}"/>
+        <echo message="${plantuml.version}" file="${file.version}"/>
         <notifysend title="Phing" msg="${plantuml.version}" icon="info"/>
     </target>
 
@@ -95,7 +84,7 @@
     <target name="jar:test" description="Check the correct functioning of plantuml.jar">
         <phingcall target="test:clean"/>
         <phingcall target="jar:run"/>
-        <phingcall target="test:validate-output"/>
+        <phingcall target="test:validate"/>
     </target>
 
 
@@ -103,68 +92,47 @@
     <target name="executable:test" description="Check the correct functioning of plantuml executable">
         <phingcall target="test:clean"/>
         <phingcall target="executable:run"/>
-        <phingcall target="test:validate-output"/>
+        <phingcall target="test:validate"/>
     </target>
 
 
     <!--Execute plantuml.jar-->
     <target name="jar:run" description="Generates .png files with plantuml.jar">
-        <mkdir dir="${dir.output.absolute}"/>
+        <mkdir dir="${dir.output}"/>
         <exec executable="java" passthru="true" checkreturn="true">
             <arg value="-jar"/>
             <arg value="bin/plantuml.jar"/>
             <arg value="-verbose"/>
             <arg value="-o"/>
-            <arg value="${dir.output.absolute}"/>
-            <arg value="${dir.input.absolute}/*.puml"/>
+            <arg value="${dir.output}"/>
+            <arg value="${dir.input}/*.puml"/>
         </exec>
     </target>
 
 
     <!--Testing executable-->
     <target name="executable:run" description="Generates .png files with plantuml executable">
-        <mkdir dir="${dir.output.absolute}"/>
+        <mkdir dir="${dir.output}"/>
         <exec executable="bin/plantuml" passthru="true" checkreturn="true">
             <arg value="-verbose"/>
             <arg value="-o"/>
-            <arg value="${dir.output.absolute}"/>
-            <arg value="${dir.input.absolute}/*.puml"/>
+            <arg value="${dir.output}"/>
+            <arg value="${dir.input}/*.puml"/>
         </exec>
     </target>
 
 
     <!--Clean png files-->
     <target name="test:clean" description="Deletes output dir">
-        <delete dir="${dir.output.absolute}" verbose="true"/>
+        <delete dir="${dir.output}" verbose="true"/>
     </target>
 
 
     <!--Checks png files exists-->
-    <target name="test:validate-output" description="Verifies the existence of .png files">
-        <mkdir dir="${dir.tmp.absolute}"/>
-
-        <!--Create manifest file-->
-        <manifest file="${dir.tmp.absolute}/expected-output.txt">
-            <fileset dir="${dir.input.absolute}">
-                <include name="*.puml"/>
-            </fileset>
-        </manifest>
-
-        <!--Replace extensions in manifest file-->
-        <reflexive>
-            <fileset dir="${dir.tmp.absolute}">
-                <include name="expected-output.txt"/>
-            </fileset>
-            <filterchain>
-                <replaceregexp>
-                    <regexp pattern="\.puml" replace=".png" ignoreCase="true"/>
-                </replaceregexp>
-            </filterchain>
-        </reflexive>
-
-        <!--Checking files existence-->
+    <target name="test:validate" description="Verifies the existence of .png files">
         <foreach target="test:file-check" param="filename" absparam="filename.absolute">
-            <filelist dir="${dir.output.absolute}" listfile="${dir.tmp.absolute}/expected-output.txt"/>
+            <filelist dir="${dir.output}"
+                      files="colors.png, colors-azure.png, sequence-diagram.png, testdot.png, version.png"/>
         </foreach>
     </target>
 
@@ -174,7 +142,7 @@
         <if>
             <available file="${filename.absolute}"/>
             <then>
-                <echo message="OK: ${filename}"/>
+                <echo message="OK: ${filename.absolute}"/>
             </then>
             <else>
                 <fail message="NOT FOUND: ${filename.absolute}"/>
@@ -183,8 +151,8 @@
     </target>
 
 
-    <target name="properties">
-        <echoproperties/>
+    <target name="diagnostics">
+        <diagnostics/>
     </target>
 
 </project>

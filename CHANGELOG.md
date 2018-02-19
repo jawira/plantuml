@@ -10,13 +10,34 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]
 ------------
 
+v1.2.2 - 2018-02-19
+-------------------
+
+### Added
+
+- `diagnostics` target was added to [./build.xml](), this is very useful for 
+  debugging.
+
+
+### Changed
+
+- [./.gitattributes]() was refactored to increase readability.
+- `help` target from [./build.xml]() was improved.
+- Refactoring and renaming target to `test:validate`.
+
+
+### Removed
+
+- `properties` target was removed from [./build.xml]().
+
 
 v1.2.1 - 2018-02-11
 -------------------
 
 ### Added 
 
-- Created [.gitattributes](./.gitattributes) file to exclude unnecessary files for Composer. 
+- Created [.gitattributes](./.gitattributes) file to exclude unnecessary files 
+  for Composer. 
 
 ### Changed 
 
@@ -36,7 +57,8 @@ v1.1.4 - 2018-02-07
 
 ### Changed
 
-- Readme file is automatically updated when downloading `plantuml.jar` lasts version
+- Readme file is automatically updated when downloading `plantuml.jar` lasts 
+  version
  
 
 v1.1.3 - 2018-02-06
