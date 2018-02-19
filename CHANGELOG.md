@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]
 ------------
 
+v1.2.2 - 2018-02-19
+-------------------
+
 ### Added
 
 - `diagnostics` target was added to [./build.xml](), this is very useful for 
@@ -25,7 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- `properties` target was removed from [./build.xml]().   
+- `properties` target was removed from [./build.xml]().
 
 
 v1.2.1 - 2018-02-11
