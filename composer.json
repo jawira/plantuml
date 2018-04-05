@@ -1,23 +1,23 @@
 {
   "name": "jawira/plantuml",
-  "description": "Provides PlantUML integration: plantuml executable and plantuml.jar",
   "type": "library",
-  "license": "GPL-3.0-or-later",
-  "homepage": "https://github.com/jawira/plantuml",
+  "description": "Provides PlantUML integration: plantuml executable and plantuml.jar",
   "keywords": [
     "plantuml",
     "plantuml.jar",
     "uml",
     "diagram"
   ],
+  "homepage": "https://github.com/jawira/plantuml",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
-      "name": "Jawira Portugal"
+      "name": "Jawira Portugal",
+      "homepage": "http://jawira.com/"
     }
   ],
   "suggest": {
-    "phing/phing": "To update and test plantuml.jar",
-    "pds/skeleton": "Generates basic project structure"
+    "phing/phing": "I use Phing to update PlantUML and run tests"
   },
   "bin": [
     "bin/plantuml"
