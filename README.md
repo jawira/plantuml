@@ -28,7 +28,7 @@ Install
 
 Install using Composer:
 
-```sh
+```bash
 $ composer require jawira/plantuml
 ```
 
@@ -37,13 +37,13 @@ Usage
 
 Check that PlantUML is working correctly:
 
-```sh
+```bash
 $ vendor/bin/plantuml -version
 ```
 
 To generate a diagram:
 
-```sh
+```bash
 $ vendor/bin/plantuml /path/to/file.puml
 ```
 
@@ -51,7 +51,7 @@ By default _png_ image is created in same location as _puml_ file.
 
 You also get access to **plantuml.jar**:
 
-```sh
+```bash
 $ java -jar ./vendor/jawira/plantuml/bin/plantuml.jar -version
 ```
 
