@@ -17,6 +17,7 @@ v1.7.0 - 2018-06-19
 ### Changed
 
 - Updated to PlantUML Version 1.2018.07
+- Readme includes checksum info for [bin/plantuml.jar]()
 
 v1.6.0 - 2018-05-30
 -------------------
