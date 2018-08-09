@@ -36,13 +36,16 @@
             <filterchain>
                 <replaceregexp>
                     <regexp pattern="&lt;!--version:start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--version:end--&gt;"
-                            replace="&lt;!--version:start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--version:end--&gt;"/>
+                            replace="&lt;!--version:start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--version:end--&gt;"
+                            modifiers="U"/>
 
                     <regexp pattern="&lt;!--md5:start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--md5:end--&gt;"
-                            replace="&lt;!--md5:start--&gt;${checksum.md5}&lt;!--md5:end--&gt;"/>
+                            replace="&lt;!--md5:start--&gt;${checksum.md5}&lt;!--md5:end--&gt;"
+                            modifiers="U"/>
 
                     <regexp pattern="&lt;!--sha1:start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--sha1:end--&gt;"
-                            replace="&lt;!--sha1:start--&gt;${checksum.sha1}&lt;!--sha1:end--&gt;"/>
+                            replace="&lt;!--sha1:start--&gt;${checksum.sha1}&lt;!--sha1:end--&gt;"
+                            modifiers="U"/>
                 </replaceregexp>
             </filterchain>
         </reflexive>
