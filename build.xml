@@ -13,9 +13,9 @@
     <target name="help">
         <echo>
             Targets:
-            $ phing test        # Tests bin/plantuml and bin/plantuml.jar
-            $ phing update      # Download to last version of PlantUML
-            $ phing -l          # Full list of targets
+            $ phing test # Tests bin/plantuml and bin/plantuml.jar
+            $ phing update # Download to last version of PlantUML
+            $ phing -l # Full list of targets
             $ phing diagnostics # Useful info to run in IDE
         </echo>
     </target>
@@ -153,6 +153,18 @@
 
     <target name="diagnostics">
         <diagnostics/>
+    </target>
+
+    <target name="checksum" description="Generate checksums for plantuml.jar">
+        <mkdir dir="resources/checksum/"/>
+        <!--md5-->
+        <filehash file="bin/plantuml.jar" propertyname="checksum.md5" algorithm="md5"/>
+        <echo message="${checksum.md5}" file="resources/checksum/plantuml.jar.md5"/>
+        <echo message="${checksum.md5}"/>
+        <!--sha1-->
+        <filehash file="bin/plantuml.jar" propertyname="checksum.sha1" algorithm="sha1"/>
+        <echo message="${checksum.sha1}" file="resources/checksum/plantuml.jar.sha1"/>
+        <echo message="${checksum.sha1}"/>
     </target>
 
 </project>
