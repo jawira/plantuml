@@ -23,22 +23,30 @@
 
     <!--Update bin/plantuml.jar-->
     <target name="update"
-            depends="jar:update, test, readme:update"
+            depends="jar:update, test, checksum, readme:update"
             description="Update project with latest version of PlantUML"/>
 
 
     <!--Update README.md-->
     <target name="readme:update"
             description="Sets current PlantUML version in README.md"
-            depends="jar:save-version">
+            depends="jar:save-version, checksum">
+        <!--version-->
         <reflexive file="./README.md">
             <filterchain>
                 <replaceregexp>
-                    <regexp pattern="&lt;!--start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--end--&gt;"
-                            replace="&lt;!--start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--end--&gt;"/>
+                    <regexp pattern="&lt;!--version:start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--version:end--&gt;"
+                            replace="&lt;!--version:start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--version:end--&gt;"/>
+
+                    <regexp pattern="&lt;!--md5:start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--md5:end--&gt;"
+                            replace="&lt;!--md5:start--&gt;${checksum.md5}&lt;!--md5:end--&gt;"/>
+
+                    <regexp pattern="&lt;!--sha1:start--&gt;[[:space:][:alnum:][:punct:]]*&lt;!--sha1:end--&gt;"
+                            replace="&lt;!--sha1:start--&gt;${checksum.sha1}&lt;!--sha1:end--&gt;"/>
                 </replaceregexp>
             </filterchain>
         </reflexive>
+
     </target>
 
 
