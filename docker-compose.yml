@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  app:
+    image: registry.gitlab.com/jawira/plantuml
+    build:
+      context: .
+      dockerfile: Dockerfile
