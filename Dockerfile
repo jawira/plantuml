@@ -14,5 +14,5 @@ RUN echo "#### apt-get ####" \
     && composer self-update \
     && composer global require hirak/prestissimo \
     && echo "#### Cleaning everything ####" \
-    && composer clear-cache
+    && composer clear-cache \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
