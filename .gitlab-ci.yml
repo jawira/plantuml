@@ -1,6 +1,27 @@
-image: 'php:7.2'
+stages:
+- docker
+- auto-update
 
-plantuml:auto-update:
+
+build-and-push:
+  # https://connect.adfab.fr/outils/gitlab-4-cicd-docker-and-registry
+  stage: docker
+  image: docker:18
+  only:
+  - schedules
+  services:
+  - docker:dind
+  before_script:
+  - apk add --update py-pip && pip install docker-compose
+  script:
+  - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
+  - docker-compose build
+  - docker push "${CI_REGISTRY_IMAGE}"
+
+
+auto-update:
+  stage: auto-update
+  image: registry.gitlab.com/jawira/plantuml
   only:
   - schedules
   before_script:
