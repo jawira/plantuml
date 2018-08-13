@@ -1,4 +1,5 @@
 .idea/
+resources/auto-update/
 resources/output/
 resources/plantuml-code/
 resources/tmp/

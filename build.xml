@@ -178,4 +178,11 @@
         <echo message="${checksum.sha1}"/>
     </target>
 
+
+    <target name="auto-update:clone">
+        <!--https://stackoverflow.com/a/50193010/-->
+        <gitclone branch="master"
+                  repository="https://${GIT_ACCESS_TOKEN}@github.com/jawira/plantuml.git"
+                  targetPath="resources/auto-update"/>
+    </target>
 </project>
