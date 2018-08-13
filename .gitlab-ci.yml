@@ -25,5 +25,5 @@ auto-update:
   only:
   - schedules
   script:
-  - phing auto-update:clone -DGIT_ACCESS_TOKEN=${GIT_ACCESS_TOKEN}
+  - phing -q auto-update:clone -DGIT_ACCESS_TOKEN=${GIT_ACCESS_TOKEN}
   - ls -l resources/auto-update/
