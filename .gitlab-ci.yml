@@ -3,7 +3,7 @@ stages:
 - auto-update
 
 
-docker:build-n-push:
+build-n-push:
   # https://connect.adfab.fr/outils/gitlab-4-cicd-docker-and-registry
   stage: docker
   image: docker:18
@@ -21,7 +21,7 @@ docker:build-n-push:
 
 auto-update:
   stage: auto-update
-  image: registry.gitlab.com/jawira/plantuml
+  image: ${CI_REGISTRY_IMAGE}
   only:
   - schedules
   script:

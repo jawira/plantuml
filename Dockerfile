@@ -17,6 +17,7 @@ RUN echo "#### apt-get ####" \
     && echo "#### Phing ####" \
     && wget -O /usr/bin/phing https://github.com/phingofficial/phing/releases/3.0.0-alpha1 \
     && chmod +x /usr/bin/phing \
+    && phing -v \
     && echo "#### Cleaning everything ####" \
     && rm -f composer-setup.php \
     && composer clear-cache \
