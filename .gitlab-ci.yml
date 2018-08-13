@@ -3,7 +3,7 @@ stages:
 - auto-update
 
 
-build-and-push:
+docker:build-n-push:
   # https://connect.adfab.fr/outils/gitlab-4-cicd-docker-and-registry
   stage: docker
   image: docker:18
