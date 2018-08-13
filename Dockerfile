@@ -15,7 +15,7 @@ RUN echo "#### apt-get ####" \
     && composer self-update \
     && composer global require hirak/prestissimo \
     && echo "#### Phing ####" \
-    && wget -O /usr/bin/phing https://github.com/phingofficial/phing/releases/3.0.0-alpha1 \
+    && wget -O /usr/bin/phing https://github.com/phingofficial/phing/releases/download/3.0.0-alpha1/phing-3.0.0-alpha1.phar \
     && chmod +x /usr/bin/phing \
     && phing -v \
     && echo "#### Cleaning everything ####" \
