@@ -14,6 +14,9 @@ RUN echo "#### apt-get ####" \
     && chmod +x /usr/bin/composer \
     && composer self-update \
     && composer global require hirak/prestissimo \
+    && echo "#### Phing ####" \
+    && wget -O /usr/bin/phing https://github.com/phingofficial/phing/releases/3.0.0-alpha1 \
+    && chmod +x /usr/bin/phing \
     && echo "#### Cleaning everything ####" \
     && rm -f composer-setup.php \
     && composer clear-cache \
