@@ -23,6 +23,7 @@
     "bin/plantuml"
   ],
   "require": {
-    "jawira/skeleton": "^1.4"
+    "jawira/skeleton": "^1.4",
+    "jawira/phing-visualizer": "^1.6"
   }
 }

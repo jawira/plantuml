@@ -6,7 +6,7 @@
     <resolvepath propertyName="dir.output" path="./resources/output/"/>
     <resolvepath propertyName="dir.input" path="./resources/puml/"/>
     <resolvepath propertyName="dir.tmp" path="./resources/tmp/"/>
-    <property name="file.version" value="./resources/plantuml.version.txt"/>
+    <property name="file.version" value="./resources/readme/plantuml.version.txt"/>
 
 
     <!--Basic help-->
@@ -23,14 +23,14 @@
 
     <!--Update bin/plantuml.jar-->
     <target name="update"
-            depends="jar:update, test, checksum, readme:update"
+            depends="jar:update, test, jar:checksum, readme:update"
             description="Update project with latest version of PlantUML"/>
 
 
     <!--Update README.md-->
     <target name="readme:update"
             description="Sets current PlantUML version in README.md"
-            depends="jar:save-version, checksum">
+            depends="jar:version, jar:checksum">
         <!--version-->
         <reflexive file="./README.md">
             <filterchain>
@@ -55,6 +55,7 @@
 
     <!--Download bin/plantuml.jar-->
     <target name="jar:update" description="Download latest version of PlantUML">
+        <filehash file="bin/plantuml.jar" propertyname="pre-update.sha1"/>
         <delete file="bin/plantuml.jar"/>
         <httpget dir="bin"
                  url="https://sourceforge.net/projects/plantuml/files/latest/download?source=typ_redirect"
@@ -64,7 +65,7 @@
 
 
     <!--${plantuml.version}-->
-    <target name="jar:version" description="Prints PlantUML version">
+    <target name="jar:version" description="Retrieve current PlantUML version">
         <exec executable="bin/plantuml" outputProperty="plantuml.output">
             <arg value="-v"/>
         </exec>
@@ -74,14 +75,6 @@
                        match="$0"
                        defaultvalue="-"
                        override="true"/>
-        <echo message="${plantuml.version}"/>
-    </target>
-
-
-    <!--resources/plantuml.version.txt-->
-    <target name="jar:save-version"
-            description="Saves current PlantUML version in text file"
-            depends="jar:version">
         <echo message="${plantuml.version}" file="${file.version}"/>
         <notifysend title="Phing" msg="${plantuml.version}" icon="info"/>
     </target>
@@ -166,23 +159,50 @@
         <diagnostics/>
     </target>
 
-    <target name="checksum" description="Generate checksums for plantuml.jar">
-        <mkdir dir="resources/checksum/"/>
+    <target name="jar:checksum" description="Generate checksums for plantuml.jar">
+        <mkdir dir="resources/readme/"/>
         <!--md5-->
         <filehash file="bin/plantuml.jar" propertyname="checksum.md5" algorithm="md5"/>
-        <echo message="${checksum.md5}" file="resources/checksum/plantuml.jar.md5"/>
+        <echo message="${checksum.md5}" file="resources/readme/plantuml.jar.md5"/>
         <echo message="${checksum.md5}"/>
         <!--sha1-->
         <filehash file="bin/plantuml.jar" propertyname="checksum.sha1" algorithm="sha1"/>
-        <echo message="${checksum.sha1}" file="resources/checksum/plantuml.jar.sha1"/>
+        <echo message="${checksum.sha1}" file="resources/readme/plantuml.jar.sha1"/>
         <echo message="${checksum.sha1}"/>
     </target>
 
 
     <target name="auto-update:clone">
         <!--https://stackoverflow.com/a/50193010/-->
+        <fail unless="GIT_ACCESS_TOKEN" message="Please set GIT_ACCESS_TOKEN property"/>
+        <delete dir="resources/auto-update"/>
         <gitclone branch="master"
                   repository="https://${GIT_ACCESS_TOKEN}@github.com/jawira/plantuml.git"
                   targetPath="resources/auto-update"/>
+    </target>
+
+    <target name="auto-update:save">
+        <fail unless="pre-update.sha1" message="Checksum not found"/>
+        <fail unless="checksum.sha1" message="Checksum not found"/>
+
+        <if>
+            <not>
+                <equals arg1="${pre-update.sha1}" arg2="${checksum.sha1}"/>
+            </not>
+            <then>
+                <!--jar file has changed-->
+            </then>
+        </if>
+    </target>
+    
+    <target name="demo">
+        <gitbranch branchname="feature/deleteme" repository="${application.startdir}"/>
+    </target>
+    
+    <target name="jar:next-version" description="Retrieves version number for next release">
+        <gitdescribe repository="resources/auto-update" outputProperty="describe.output"/>
+        <php expression="trim(trim('${describe.output}', 'v'));" returnProperty="describe.output"/>
+        <delete file="build.version"/>
+        <version startingVersion="${describe.output}" releasetype="Minor" property="build.version"/>
     </target>
 </project>
