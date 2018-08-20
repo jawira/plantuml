@@ -1,59 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="PlantUML" description="Provides PlantUML integration" default="help">
+<project name="PlantUML" description="Provides PlantUML integration" default="diagnostics">
 
-    <!--Properties-->
+    <!--PROPERTIES-->
     <resolvepath propertyName="dir.output" path="./resources/output/"/>
     <resolvepath propertyName="dir.input" path="./resources/puml/"/>
     <resolvepath propertyName="dir.tmp" path="./resources/tmp/"/>
     <property name="file.version" value="./resources/readme/plantuml.version.txt"/>
 
-
-    <!--Basic help-->
-    <target name="help">
-        <echo>
-            Targets:
-            $ phing test # Tests bin/plantuml and bin/plantuml.jar
-            $ phing update # Download to last version of PlantUML
-            $ phing -l # Full list of targets
-            $ phing diagnostics # Useful info to run in IDE
-        </echo>
-    </target>
-
-
-    <!--Update bin/plantuml.jar-->
+    <!--TARGETS-->
     <target name="update"
             depends="jar:update, test, jar:checksum, readme:update"
             description="Update project with latest version of PlantUML"/>
 
-
-    <!--Update README.md-->
     <target name="readme:update"
             description="Sets current PlantUML version in README.md"
             depends="jar:version, jar:checksum">
-        <!--version-->
         <reflexive file="./README.md">
             <filterchain>
                 <replaceregexp>
                     <regexp pattern="&lt;!--version:start--&gt;.*&lt;!--version:end--&gt;"
                             replace="&lt;!--version:start--&gt;${line.separator}${plantuml.version}${line.separator}&lt;!--version:end--&gt;"
                             modifiers="Us"/>
-
                     <regexp pattern="&lt;!--md5:start--&gt;.*&lt;!--md5:end--&gt;"
                             replace="&lt;!--md5:start--&gt;${checksum.md5}&lt;!--md5:end--&gt;"
                             modifiers="Us"/>
-
                     <regexp pattern="&lt;!--sha1:start--&gt;.*&lt;!--sha1:end--&gt;"
                             replace="&lt;!--sha1:start--&gt;${checksum.sha1}&lt;!--sha1:end--&gt;"
                             modifiers="Us"/>
                 </replaceregexp>
             </filterchain>
         </reflexive>
-
     </target>
 
-
-    <!--Download bin/plantuml.jar-->
     <target name="jar:update" description="Download latest version of PlantUML">
         <filehash file="bin/plantuml.jar" propertyname="pre-update.sha1"/>
         <delete file="bin/plantuml.jar"/>
@@ -63,8 +42,6 @@
                  filename="plantuml.jar"/>
     </target>
 
-
-    <!--${plantuml.version}-->
     <target name="jar:version" description="Retrieve current PlantUML version">
         <exec executable="bin/plantuml" outputProperty="plantuml.output">
             <arg value="-v"/>
@@ -79,28 +56,20 @@
         <notifysend title="Phing" msg="${plantuml.version}" icon="info"/>
     </target>
 
-
-    <!--Test plantuml.jar and executable-->
     <target name="test" depends="jar:test, executable:test" description="Runs all tests"/>
 
-
-    <!--Test plantuml.jar-->
     <target name="jar:test" description="Check the correct functioning of plantuml.jar">
         <phingcall target="test:clean"/>
         <phingcall target="jar:run"/>
         <phingcall target="test:validate"/>
     </target>
 
-
-    <!--Test bin/plantuml-->
     <target name="executable:test" description="Check the correct functioning of plantuml executable">
         <phingcall target="test:clean"/>
         <phingcall target="executable:run"/>
         <phingcall target="test:validate"/>
     </target>
 
-
-    <!--Execute plantuml.jar-->
     <target name="jar:run" description="Generates .png files with plantuml.jar">
         <mkdir dir="${dir.output}"/>
         <exec executable="java" passthru="true" checkreturn="true">
@@ -113,8 +82,6 @@
         </exec>
     </target>
 
-
-    <!--Testing executable-->
     <target name="executable:run" description="Generates .png files with plantuml executable">
         <mkdir dir="${dir.output}"/>
         <exec executable="bin/plantuml" passthru="true" checkreturn="true">
@@ -125,14 +92,10 @@
         </exec>
     </target>
 
-
-    <!--Clean png files-->
     <target name="test:clean" description="Deletes output dir">
         <delete dir="${dir.output}" verbose="true"/>
     </target>
 
-
-    <!--Checks png files exists-->
     <target name="test:validate" description="Verifies the existence of .png files">
         <foreach target="test:file-check" param="filename" absparam="filename.absolute">
             <filelist dir="${dir.output}"
@@ -140,8 +103,6 @@
         </foreach>
     </target>
 
-
-    <!--Helper target, fails if file isn't found-->
     <target name="test:file-check" hidden="true">
         <if>
             <available file="${filename.absolute}"/>
@@ -153,7 +114,6 @@
             </else>
         </if>
     </target>
-
 
     <target name="diagnostics">
         <diagnostics/>
@@ -170,7 +130,6 @@
         <echo message="${checksum.sha1}" file="resources/readme/plantuml.jar.sha1"/>
         <echo message="${checksum.sha1}"/>
     </target>
-
 
     <target name="auto-update:clone">
         <!--https://stackoverflow.com/a/50193010/-->
@@ -193,10 +152,6 @@
                 <!--jar file has changed-->
             </then>
         </if>
-    </target>
-    
-    <target name="demo">
-        <gitbranch branchname="feature/deleteme" repository="${application.startdir}"/>
     </target>
     
     <target name="jar:next-version" description="Retrieves version number for next release">
