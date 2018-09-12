@@ -131,29 +131,6 @@
         <echo message="${checksum.sha1}"/>
     </target>
 
-    <target name="auto-update:clone">
-        <!--https://stackoverflow.com/a/50193010/-->
-        <fail unless="GIT_ACCESS_TOKEN" message="Please set GIT_ACCESS_TOKEN property"/>
-        <delete dir="resources/auto-update"/>
-        <gitclone branch="master"
-                  repository="https://${GIT_ACCESS_TOKEN}@github.com/jawira/plantuml.git"
-                  targetPath="resources/auto-update"/>
-    </target>
-
-    <target name="auto-update:save">
-        <fail unless="pre-update.sha1" message="Checksum not found"/>
-        <fail unless="checksum.sha1" message="Checksum not found"/>
-
-        <if>
-            <not>
-                <equals arg1="${pre-update.sha1}" arg2="${checksum.sha1}"/>
-            </not>
-            <then>
-                <!--jar file has changed-->
-            </then>
-        </if>
-    </target>
-    
     <target name="jar:next-version" description="Retrieves version number for next release">
         <gitdescribe repository="resources/auto-update" outputProperty="describe.output"/>
         <php expression="trim(trim('${describe.output}', 'v'));" returnProperty="describe.output"/>
