@@ -1,7 +1,9 @@
-.idea/
-resources/output/
-resources/plantuml-code/
-resources/tmp/
-vendor/
-build.properties.ini
-composer.lock
+/.idea/
+/resources/auto-update/
+/resources/output/
+/resources/plantuml-code/
+/resources/tmp/
+/vendor/
+/build.properties.ini
+/composer.lock
+/build.version
