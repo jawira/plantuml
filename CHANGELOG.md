@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Requirements in readme file were updated
 
-v1.8.0 - 2018-06-13
+v1.8.0 - 2018-09-13
 -------------------
 
 ### Changed
