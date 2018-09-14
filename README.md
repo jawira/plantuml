@@ -15,12 +15,12 @@ PlantUML Version 1.2018.07
 Requirements
 ------------
 
-PlantUML needs **Java Runtime** and **Graphviz** installed (see <http://plantuml.com/starting>).
+PlantUML needs **Java Runtime** installed (see <http://plantuml.com/starting>).
 
-On Ubuntu you can run:
+On Ubuntu 18.04 you can run:
 
 ```bash
-$ sudo apt-get install -y  openjdk-9-jdk graphviz
+$ sudo apt-get install -y  openjdk-11-jre
 ```
 
 Install
