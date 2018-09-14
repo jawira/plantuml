@@ -8,6 +8,9 @@
     <resolvepath propertyName="dir.tmp" path="./resources/tmp/"/>
     <property name="file.version" value="./resources/readme/plantuml.version.txt"/>
 
+    <!--ALWAYS RUN-->
+    <exec executable="vendor/bin/phing-visualizer"/>
+
     <!--TARGETS-->
     <target name="update"
             depends="jar:update, test, jar:checksum, readme:update"
