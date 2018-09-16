@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="PlantUML" description="Provides PlantUML integration" default="diagnostics">
+<project name="PlantUML" description="Provides PlantUML integration" default="jar:version">
 
-    <!--PROPERTIES-->
-    <resolvepath propertyName="dir.output" path="./resources/output/"/>
-    <resolvepath propertyName="dir.input" path="./resources/puml/"/>
-    <resolvepath propertyName="dir.tmp" path="./resources/tmp/"/>
-    <property name="file.version" value="./resources/readme/plantuml.version.txt"/>
+    <runtarget target="init"/>
 
     <!--TARGETS-->
+    <target name="init" hidden="true">
+        <resolvepath propertyName="dir.output" path="./resources/output/"/>
+        <resolvepath propertyName="dir.input" path="./resources/puml/"/>
+        <resolvepath propertyName="dir.tmp" path="./resources/tmp/"/>
+        <property name="file.version" value="./resources/readme/plantuml.version.txt"/>
+        <exec executable="vendor/bin/phing-visualizer"/>
+    </target>
+
     <target name="update"
             depends="jar:update, test, jar:checksum, readme:update"
             description="Update project with latest version of PlantUML"/>
