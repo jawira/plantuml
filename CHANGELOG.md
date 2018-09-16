@@ -18,6 +18,7 @@ Unreleased
 
 - Requirements in readme file were updated
 - Refactoring build.xml
+- Changed 'Unreleased' header to ease auto-update
 
 v1.8.0 - 2018-09-13
 -------------------
