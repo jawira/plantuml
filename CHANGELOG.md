@@ -7,8 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-[Unreleased]
-------------
+Unreleased
+----------
 
 ### Added
 
@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Requirements in readme file were updated
+- Refactoring build.xml
 
 v1.8.0 - 2018-09-13
 -------------------
