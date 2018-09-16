@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Unreleased
 ----------
 
+v1.8.2 - 2018-09-16
+-------------------
+
+### Fixed
+
+- Update changelog
+
+v1.8.1 - 2018-09-16
+-------------------
+
 ### Added
 
 - `build.png` is updated everytime `phing` is executed
