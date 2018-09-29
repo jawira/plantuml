@@ -6,9 +6,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<!--
+    Added       for new features.
+    Changed     for changes in existing functionality.
+    Deprecated  for soon-to-be removed features.
+    Removed     for now removed features.
+    Fixed       for any bug fixes.
+    Security    in case of vulnerabilities.
+-->
 
 Unreleased
 ----------
+
+### Removed
+
+- Deleted `Dockerfile` and `docker-compose.yml`, the files were not needed anymore 
+since auto-update task is done elsewhere
 
 v1.8.2 - 2018-09-16
 -------------------
@@ -205,14 +218,3 @@ v0.0.0 - 2017-10-10
 - Examples of PlantUML diagrams.
 - Initial project settings using `pds/skeleton`.
 - Reusing executable from [se/selenium-server-standalone](https://packagist.org/packages/se/selenium-server-standalone)
-
-
-
-<!--
-    Added       for new features.
-    Changed     for changes in existing functionality.
-    Deprecated  for soon-to-be removed features.
-    Removed     for now removed features.
-    Fixed       for any bug fixes.
-    Security    in case of vulnerabilities.
--->
