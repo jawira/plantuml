@@ -12,18 +12,18 @@
   "license": "GPL-3.0-or-later",
   "authors": [
     {
-      "name": "Jawira Portugal",
-      "homepage": "http://jawira.com/"
+      "name": "Jawira Portugal"
     }
   ],
+  "require-dev": {
+    "jawira/phing-visualizer": "^1.6",
+    "jawira/skeleton": "^1.4"
+  },
   "suggest": {
-    "phing/phing": "I use Phing to update PlantUML and run tests"
+    "pds/skeleton": "Standard PHP package skeleton",
+    "phing/phing": "PHP Build Tool"
   },
   "bin": [
     "bin/plantuml"
-  ],
-  "require": {
-    "jawira/skeleton": "^1.4",
-    "jawira/phing-visualizer": "^1.6"
-  }
+  ]
 }
