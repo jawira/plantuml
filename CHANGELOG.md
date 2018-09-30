@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Unreleased
 ----------
 
+v1.9.1 - 2018-09-30
+-------------------
+
 ### Removed
 
 - Deleted `Dockerfile` and `docker-compose.yml`, the files were not needed anymore 
