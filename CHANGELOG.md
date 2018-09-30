@@ -23,6 +23,13 @@ Unreleased
 - Deleted `Dockerfile` and `docker-compose.yml`, the files were not needed anymore 
 since auto-update task is done elsewhere
 
+v1.9.0 - 2018-09-23
+-------------------
+
+### Changed
+
+- (auto-update) Updated to PlantUML Version 1.2018.11
+
 v1.8.2 - 2018-09-16
 -------------------
 
