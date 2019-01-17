@@ -11,6 +11,7 @@ PlantUML Version 1.2018.14
 [![Total Downloads](https://poser.pugx.org/jawira/plantuml/downloads)](https://packagist.org/packages/jawira/plantuml) 
 [![License](https://poser.pugx.org/jawira/plantuml/license)](https://packagist.org/packages/jawira/plantuml)
 [![composer.lock](https://poser.pugx.org/jawira/plantuml/composerlock)](https://packagist.org/packages/jawira/plantuml)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/Jawira/plantuml.svg?columns=all)](https://waffle.io/Jawira/plantuml)
 
 Requirements
 ------------
