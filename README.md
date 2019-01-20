@@ -4,13 +4,14 @@ PlantUML integration
 Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
 <!--version:start-->
-PlantUML Version 1.2018.14
+PlantUML Version 1.2019.00
 <!--version:end-->
 
 [![Latest Stable Version](https://poser.pugx.org/jawira/plantuml/v/stable)](https://packagist.org/packages/jawira/plantuml) 
 [![Total Downloads](https://poser.pugx.org/jawira/plantuml/downloads)](https://packagist.org/packages/jawira/plantuml) 
 [![License](https://poser.pugx.org/jawira/plantuml/license)](https://packagist.org/packages/jawira/plantuml)
 [![composer.lock](https://poser.pugx.org/jawira/plantuml/composerlock)](https://packagist.org/packages/jawira/plantuml)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/Jawira/plantuml.svg?columns=all)](https://waffle.io/Jawira/plantuml)
 
 Requirements
 ------------
@@ -59,15 +60,15 @@ Checksum
 --------
 
 <!--version:start-->
-PlantUML Version 1.2018.14
+PlantUML Version 1.2019.00
 <!--version:end-->
 
 File: [bin/plantuml.jar]()
 
 | Algorithm | Checksum                                                                  |
 | --------- | ------------------------------------------------------------------------- |
-| md5       | <!--md5:start-->59c1d25b3f8e2459d67ecef344849987<!--md5:end-->            |
-| sha1      | <!--sha1:start-->fda09ec0aac32224347896774249579aaaa9d9a6<!--sha1:end-->  |
+| md5       | <!--md5:start-->9025d9266834d2da2ebc0209a996c6a1<!--md5:end-->            |
+| sha1      | <!--sha1:start-->d68ba4df0dd87b664ab44faeeaf4e698810939f9<!--sha1:end-->  |
 
 Useful links
 ------------

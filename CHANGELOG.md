@@ -18,6 +18,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Unreleased
 ----------
 
+1.14.0 - 2019-01-20
+-------------------
+
+### Changed
+
+- (auto-update) Updated to PlantUML Version 1.2019.00
+
+### Added
+
+- Added waffle.io badge to readme file
+
 1.13.0 - 2019-01-05
 -------------------
 
