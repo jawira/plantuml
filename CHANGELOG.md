@@ -18,6 +18,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Unreleased
 ----------
 
+### Changed
+
+- ([#11]) [bin/plantuml]() forces `utf-8` encoding in all OS.
+
+    According to [documentation](http://plantuml.com/faq): 
+    
+    ```
+    I have issues with accented characters.
+    
+    Characters encoding is a subtle thing... By default, PlantUML use the default charset of your platform, which may or may not be UTF-8 . If you want to know which charset you are using, you can type the following command:
+    
+    java -jar plantuml.jar -help
+    
+    ...
+    -charset xxx To use a specific charset (default is windows-1252)
+    ...
+    
+    If you want to use a different charset, for example UTF-8, you can use the -charset flag :
+    
+    java -jar plantuml.jar -charset UTF-8 ...
+    
+    ```
+
 1.14.0 - 2019-01-20
 -------------------
 
@@ -267,3 +290,5 @@ v0.0.0 - 2017-10-10
 - Examples of PlantUML diagrams.
 - Initial project settings using `pds/skeleton`.
 - Reusing executable from [se/selenium-server-standalone](https://packagist.org/packages/se/selenium-server-standalone)
+
+[#11]: https://github.com/jawira/plantuml/pull/11
