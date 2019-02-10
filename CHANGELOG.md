@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Unreleased
 ----------
 
+1.15.0 - 2019-02-10
+-------------------
+
+### Changed
+
+- (auto-update) Updated to PlantUML Version 1.2019.01
+
 ### Changed
 
 - ([#11]) [bin/plantuml]() forces `utf-8` encoding in all OS.
