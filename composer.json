@@ -16,8 +16,6 @@
     }
   ],
   "require-dev": {
-    "jawira/phing-visualizer": "^1.6",
-    "jawira/skeleton": "^1.4"
   },
   "suggest": {
     "pds/skeleton": "Standard PHP package skeleton",
