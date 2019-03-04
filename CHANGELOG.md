@@ -15,8 +15,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     Security    in case of vulnerabilities.
 -->
 
-Unreleased
-----------
+## Unreleased
+
+## v1.16.0 - 2019-03-04
+
+### Changed
+
+- Updated to PlantUML Version 1.2019.02
 
 1.15.0 - 2019-02-10
 -------------------
