@@ -1,6 +1,9 @@
 Dev notes
 =========
 
+![Phing targets](./build.png)
+
+
 Requirements
 ------------
 
