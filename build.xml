@@ -5,12 +5,11 @@
     <runtarget target="init"/>
 
     <!--TARGETS-->
-    <target name="init" hidden="true">
+    <target name="init">
         <resolvepath propertyName="dir.output" path="./resources/output/"/>
         <resolvepath propertyName="dir.input" path="./resources/puml/"/>
         <resolvepath propertyName="dir.tmp" path="./resources/tmp/"/>
         <property name="file.version" value="./resources/readme/plantuml.version.txt"/>
-        <exec executable="vendor/bin/phing-visualizer"/>
     </target>
 
     <target name="update"
@@ -160,6 +159,18 @@
         </exec>
         <composer command="remove">
             <arg value="jawira/phing-visualizer"/>
+        </composer>
+    </target>
+
+    <target name="changelog:links" description="Update links in composer.json">
+        <composer command="require">
+            <arg value="symplify/changelog-linker"/>
+        </composer>
+        <exec executable="vendor/bin/changelog-linker">
+            <arg value="link"/>
+        </exec>
+        <composer command="remove">
+            <arg value="symplify/changelog-linker"/>
         </composer>
     </target>
 </project>

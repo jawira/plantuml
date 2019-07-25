@@ -17,11 +17,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [v1.22.1] - 2019-07-25
+
 ### Changed
 
 - Update documentation
 
-## v1.22.0 - 2019-07-14
+## [v1.22.0] - 2019-07-14
 
 ### Changed
 
@@ -159,7 +161,7 @@ v1.8.1 - 2018-09-16
 
 ### Added
 
-- `build.png` is updated every time `phing` is executed
+- `build.png` is updated everytime `phing` is executed
 
 ### Changed
 
