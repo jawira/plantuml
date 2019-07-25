@@ -8,20 +8,20 @@
     "uml",
     "diagram"
   ],
-  "homepage": "https://github.com/jawira/plantuml",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "Jawira Portugal"
     }
   ],
-  "require-dev": {
-  },
+  "require-dev": {},
   "suggest": {
     "pds/skeleton": "Standard PHP package skeleton",
     "phing/phing": "PHP Build Tool"
   },
   "bin": [
     "bin/plantuml"
-  ]
+  ],
+  "require": {
+  }
 }
