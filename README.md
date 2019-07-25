@@ -11,27 +11,9 @@ PlantUML Version 1.2019.08
 [![Total Downloads](https://poser.pugx.org/jawira/plantuml/downloads)](https://packagist.org/packages/jawira/plantuml) 
 [![License](https://poser.pugx.org/jawira/plantuml/license)](https://packagist.org/packages/jawira/plantuml)
 [![composer.lock](https://poser.pugx.org/jawira/plantuml/composerlock)](https://packagist.org/packages/jawira/plantuml)
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/Jawira/plantuml.svg?columns=all)](https://waffle.io/Jawira/plantuml)
-
-Requirements
-------------
-
-PlantUML needs **Java Runtime** installed (see <http://plantuml.com/starting>).
-
-On Ubuntu 18.04 you can run:
-
-```bash
-$ sudo apt-get install -y  openjdk-11-jre
-```
-
-Install
--------
-
-Install using Composer:
-
-```bash
-$ composer require jawira/plantuml
-```
+[![PHPPackages Referenced By](http://phppackages.org/p/jawira/plantuml/badge/referenced-by.svg)](http://phppackages.org/p/jawira/plantuml)
+[![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg)](https://github.com/php-pds/skeleton)
+[![Issues](https://img.shields.io/github/issues/jawira/plantuml.svg?label=HuBoard&color=694DC2)](https://huboard.com/jawira/plantuml)
 
 Usage
 -----
@@ -56,6 +38,26 @@ You also get access to **plantuml.jar**:
 $ java -jar ./vendor/jawira/plantuml/bin/plantuml.jar -version
 ```
 
+Install
+-------
+
+Install using Composer:
+
+```bash
+$ composer require jawira/plantuml
+```
+
+Requirements
+------------
+
+PlantUML needs **Java Runtime** installed (see <http://plantuml.com/starting>).
+
+On Ubuntu 18.04 you can run:
+
+```bash
+$ sudo apt-get install -y  openjdk-11-jre
+```
+
 Checksum
 --------
 
@@ -75,3 +77,25 @@ Useful links
 
 * [Online demo server](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)
 * [PlantUML Language Reference Guide (pdf)](http://plantuml.com/PlantUML_Language_Reference_Guide.pdf)
+
+***
+
+My other packages
+-----------------
+
+<dl>
+
+<dt><a href="https://packagist.org/packages/jawira/case-converter">jawira/case-converter</a></dt>
+<dd> Convert strings between 12 naming conventions: Snake case, Camel case, Kebab case, Pascal case, Ada case, Train case, Cobol case, Macro case, Upper case, Lower case, Title case, and Sentence case.</dd>
+
+<dt><a href="https://packagist.org/packages/jawira/phing-visualizer">jawira/phing-visualizer</a></dt>
+<dd>Graphical representation of Phing's buildfile.</dd>
+
+<dt><a href="https://packagist.org/packages/jawira/plantuml-encoding">jawira/plantuml-encoding</a></dt>
+<dd>PlantUML encoding functions.</dd>
+
+<dt><a href="https://packagist.org/packages/jawira/process-maker">jawira/process-maker</a></dt>
+<dd>Easily install and try ProcessMaker using Docker Compose.</dd>
+
+</dl>
+
