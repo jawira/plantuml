@@ -141,7 +141,7 @@
         <version startingVersion="${describe.output}" releasetype="Minor" property="build.version"/>
     </target>
 
-    <target name="git:list-tags" description="List all git tags">
+    <target name="git:tags-listing" description="List all git tags">
         <!--https://stackoverflow.com/a/34239190/4345061-->
         <exec executable="git" passthru="true">
             <arg value="log"/>
@@ -159,27 +159,6 @@
         </exec>
         <composer command="remove">
             <arg value="jawira/phing-visualizer"/>
-        </composer>
-    </target>
-
-    <target name="changelog:links" description="Update links in composer.json">
-    <target name="git:list-tags" description="List all git tags">
-        <!--https://stackoverflow.com/a/34239190/4345061-->
-        <exec executable="git" passthru="true">
-            <arg value="log"/>
-            <arg line="--graph --all --decorate --oneline --simplify-by-decoration"/>
-        </exec>
-    </target>
-
-    <target name="phing:visualize" description="Update build.png">
-        <composer command="require">
-            <arg value="symplify/changelog-linker"/>
-        </composer>
-        <exec executable="vendor/bin/changelog-linker">
-            <arg value="link"/>
-        </exec>
-        <composer command="remove">
-            <arg value="symplify/changelog-linker"/>
         </composer>
     </target>
 
