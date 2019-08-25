@@ -14,8 +14,6 @@
       "name": "Jawira Portugal"
     }
   ],
-  "require-dev": {},
-  "require": {},
   "suggest": {
     "pds/skeleton": "Standard PHP package skeleton",
     "phing/phing": "PHP Build Tool"
