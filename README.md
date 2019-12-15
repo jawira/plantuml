@@ -4,7 +4,7 @@ PlantUML integration
 Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
 <!--version:start-->
-PlantUML Version 1.2019.12
+PlantUML Version 1.2019.13
 <!--version:end-->
 
 [![Latest Stable Version](https://poser.pugx.org/jawira/plantuml/v/stable)](https://packagist.org/packages/jawira/plantuml) 
@@ -14,6 +14,7 @@ PlantUML Version 1.2019.12
 [![PHPPackages Referenced By](http://phppackages.org/p/jawira/plantuml/badge/referenced-by.svg)](http://phppackages.org/p/jawira/plantuml)
 [![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg)](https://github.com/php-pds/skeleton)
 [![Issues](https://img.shields.io/github/issues/jawira/plantuml.svg?label=HuBoard&color=694DC2)](https://huboard.com/jawira/plantuml)
+[![HitCount](http://hits.dwyl.io/jawira/plantuml.svg)](http://hits.dwyl.io/jawira/plantuml)
 
 Usage
 -----
@@ -62,15 +63,15 @@ Checksum
 --------
 
 <!--version:start-->
-PlantUML Version 1.2019.12
+PlantUML Version 1.2019.13
 <!--version:end-->
 
 File: [bin/plantuml.jar]()
 
 | Algorithm | Checksum                                                                  |
 | --------- | ------------------------------------------------------------------------- |
-| md5       | <!--md5:start-->74e466def1934b0013cd1b75d137fbbb<!--md5:end-->            |
-| sha1      | <!--sha1:start-->f1539c33a90dd63dfef33d60ebc7b952447e07e6<!--sha1:end-->  |
+| md5       | <!--md5:start-->1eb0c7b5b358b956e0a62aafedfc1349<!--md5:end-->            |
+| sha1      | <!--sha1:start-->bd70e3957fe76cc2161fc7c30cce60e7ea3a1e15<!--sha1:end-->  |
 
 Useful links
 ------------
