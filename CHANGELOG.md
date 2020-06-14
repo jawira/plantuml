@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## v1.38.0 - 2020-06-14
+
+### Changed
+
+- Updated to PlantUML Version 1.2020.13
+
 ## v1.37.0 - 2020-06-07
 
 ### Changed
