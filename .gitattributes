@@ -1,5 +1,6 @@
 # Exclude non-essential files from dist
 
+.idea           export-ignore
 resources/puml  export-ignore
 docs            export-ignore
 .gitattributes  export-ignore
@@ -7,5 +8,5 @@ docs            export-ignore
 *.xml           export-ignore
 *.dist          export-ignore
 *.json          export-ignore
-CHANGELOG.md
-CONTRIBUTING.md
+CHANGELOG.md    export-ignore
+CONTRIBUTING.md export-ignore
