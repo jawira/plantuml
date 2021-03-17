@@ -150,16 +150,7 @@
     </target>
 
     <target name="phing:visualize" description="Update build.png">
-        <composer command="require">
-            <arg value="jawira/phing-visualizer"/>
-        </composer>
-        <exec executable="vendor/bin/phing-visualizer">
-            <arg value="--output"/>
-            <arg path="./docs/"/>
-        </exec>
-        <composer command="remove">
-            <arg value="jawira/phing-visualizer"/>
-        </composer>
+        <visualizer format="png" destination="docs"/>
     </target>
 
     <target name="changelog:links" description="Update links in composer.json">
