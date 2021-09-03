@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="PlantUML" description="Provides PlantUML integration" default="jar:version">
+<project name="PlantUML" description="Provides PlantUML integration" default="help">
 
     <runtarget target="init"/>
 
@@ -163,5 +163,20 @@
         <composer command="remove">
             <arg value="symplify/changelog-linker"/>
         </composer>
+    </target>
+
+    <target name="help">
+        <uptodate property="visualizer.uptodate" srcfile="build.xml" targetfile="docs/build.png"/>
+        <if>
+            <not>
+                <isset property="visualizer.uptodate"/>
+            </not>
+            <then>
+                <visualizer destination="docs/build.png"/>
+            </then>
+        </if>
+        <exec executable="xdg-open" spawn="true">
+            <arg file="docs/build.png"/>
+        </exec>
     </target>
 </project>

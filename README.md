@@ -4,17 +4,12 @@ PlantUML integration
 Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
 <!--version:start-->
-PlantUML Version 1.2021.9
+PlantUML Version 1.2021.10
 <!--version:end-->
 
-[![Latest Stable Version](https://poser.pugx.org/jawira/plantuml/v/stable)](https://packagist.org/packages/jawira/plantuml) 
-[![Total Downloads](https://poser.pugx.org/jawira/plantuml/downloads)](https://packagist.org/packages/jawira/plantuml) 
-[![License](https://poser.pugx.org/jawira/plantuml/license)](https://packagist.org/packages/jawira/plantuml)
-[![composer.lock](https://poser.pugx.org/jawira/plantuml/composerlock)](https://packagist.org/packages/jawira/plantuml)
-[![PHPPackages Referenced By](http://phppackages.org/p/jawira/plantuml/badge/referenced-by.svg)](http://phppackages.org/p/jawira/plantuml)
-[![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg)](https://github.com/php-pds/skeleton)
-[![Issues](https://img.shields.io/github/issues/jawira/plantuml.svg?label=HuBoard&color=694DC2)](https://huboard.com/jawira/plantuml)
-[![HitCount](http://hits.dwyl.io/jawira/plantuml.svg)](http://hits.dwyl.io/jawira/plantuml)
+![Packagist Version](https://img.shields.io/packagist/v/jawira/plantuml?style=for-the-badge)
+![Packagist Downloads](https://img.shields.io/packagist/dt/jawira/plantuml?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/jawira/plantuml?style=for-the-badge)
 
 Usage
 -----
@@ -45,7 +40,7 @@ Install
 Install using Composer:
 
 ```console
-$ composer require --prefer-dist jawira/plantuml
+$ composer require jawira/plantuml
 ```
 
 Requirements
@@ -63,15 +58,15 @@ Checksum
 --------
 
 <!--version:start-->
-PlantUML Version 1.2021.9
+PlantUML Version 1.2021.10
 <!--version:end-->
 
 File: [bin/plantuml.jar](bin/plantuml.jar)
 
 | Algorithm | Checksum                                                                  |
 | --------- | ------------------------------------------------------------------------- |
-| md5       | <!--md5:start-->e56af561ca82e2ab1725538832d100a5<!--md5:end-->            |
-| sha1      | <!--sha1:start-->43074c90b705e073e04bd23d4844a0921fba3220<!--sha1:end-->  |
+| md5       | <!--md5:start-->5f3b1d49ae05801b0878cd29d5188204<!--md5:end-->            |
+| sha1      | <!--sha1:start-->1cff49c207627d7ba6f109971dcaddad80457525<!--sha1:end-->  |
 
 ***
 
@@ -80,10 +75,17 @@ Packages from jawira
 
 <dl>
 
-<dt><a href="https://packagist.org/packages/jawira/plantuml-encoding">jawira/plantuml-encoding</a></dt>
+<dt>
+    <a href="https://packagist.org/packages/jawira/plantuml-encoding"> jawira/plantuml-encoding
+    <img alt="GitHub stars" src="https://badgen.net/github/stars/jawira/plantuml-encoding?icon=github"/></a>
+</dt>
 <dd>PlantUML encoding functions.</dd>
 
-<dt><a href="https://packagist.org/packages/jawira/case-converter">jawira/case-converter</a></dt>
-<dd> Convert strings between 12 naming conventions: Snake case, Camel case, Kebab case, Pascal case, Ada case, Train case, Cobol case, Macro case, Upper case, Lower case, Title case, and Sentence case.</dd>
+<dt>
+    <a href="https://packagist.org/packages/jawira/plantuml-client"> jawira/plantuml-client
+    <img alt="GitHub stars" src="https://badgen.net/github/stars/jawira/plantuml-client?icon=github"/></a>
+</dt>
+<dd>Convert PlantUML diagrams into images (svg, png, ...).</dd>
 
+<dt><a href="https://packagist.org/packages/jawira/">more...</a></dt>
 </dl>

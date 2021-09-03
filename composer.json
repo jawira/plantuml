@@ -6,7 +6,8 @@
     "plantuml",
     "plantuml.jar",
     "uml",
-    "diagram"
+    "diagram",
+    "jar"
   ],
   "license": "GPL-3.0-or-later",
   "authors": [
@@ -14,10 +15,6 @@
       "name": "Jawira Portugal"
     }
   ],
-  "suggest": {
-    "pds/skeleton": "Standard PHP package skeleton",
-    "phing/phing": "PHP Build Tool"
-  },
   "bin": [
     "bin/plantuml"
   ]
