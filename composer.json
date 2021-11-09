@@ -1,7 +1,7 @@
 {
   "name": "jawira/plantuml",
   "type": "library",
-  "description": "Provides PlantUML integration: plantuml executable and plantuml.jar",
+  "description": "Provides PlantUML executable and plantuml.jar",
   "keywords": [
     "plantuml",
     "plantuml.jar",
@@ -15,6 +15,10 @@
       "name": "Jawira Portugal"
     }
   ],
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
   "bin": [
     "bin/plantuml"
   ]
