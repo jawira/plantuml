@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="PlantUML" description="Provides PlantUML integration" default="help">
 
-
+  <!-- PlantUML test requires absolute path to work well -->
   <resolvepath propertyName="dir.output" path="resources/output"/>
 
 
