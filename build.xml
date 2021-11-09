@@ -2,7 +2,7 @@
 <project name="PlantUML" description="Provides PlantUML integration" default="help">
 
 
-  <property name="dir.output" value="resources/output"/>
+  <resolvepath propertyName="dir.output" path="resources/output"/>
 
 
   <target name="update" depends="jar:update, readme:update"
