@@ -10,3 +10,6 @@ ij_visual_guides         = 80, 120
 [*.{php, yml, yaml, neon, xml, xsl, json, twig}]
 indent_size  = 2
 indent_style = space
+
+[version.txt]
+insert_final_newline = false
