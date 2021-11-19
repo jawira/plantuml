@@ -7,9 +7,9 @@ Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** a
 PlantUML Version 1.2021.14
 <!--version:end-->
 
-![Packagist Version](https://img.shields.io/packagist/v/jawira/plantuml?style=for-the-badge)
-![Packagist Downloads](https://img.shields.io/packagist/dt/jawira/plantuml?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/jawira/plantuml?style=for-the-badge)
+[![Packagist Version](https://img.shields.io/packagist/v/jawira/plantuml?style=for-the-badge)](https://packagist.org/packages/jawira/plantuml)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/jawira/plantuml?style=for-the-badge)](https://packagist.org/packages/jawira/plantuml)
+[![GitHub Repo stars](https://img.shields.io/github/stars/jawira/plantuml?style=for-the-badge)](https://packagist.org/packages/jawira/plantuml)
 
 Usage
 -----
