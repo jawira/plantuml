@@ -34,13 +34,16 @@
   </target>
 
   <target name="jar:version" description="Retrieve current PlantUML version">
-    <exec executable="bin/plantuml" outputProperty="plantuml.output">
+    <exec executable="bin/plantuml" outputProperty="plantuml.output" checkreturn="true">
       <arg value="-v"/>
     </exec>
-    <propertyregex property="version.long" pattern="\bPlantUML Version (\d+\.\d+\.\d+)\b"
+    <echo>${plantuml.output}</echo>
+    <property name="version.regex" value="\bPlantUML Version (\d+\.\d+\..+)\b"/>
+    <propertyregex property="version.long" pattern="${version.regex}"
                    subject="${plantuml.output}" match="$0" defaultvalue="-" override="true"/>
-    <propertyregex property="version.short" pattern="\bPlantUML Version (\d+\.\d+\.\d+)\b"
+    <propertyregex property="version.short" pattern="${version.regex}"
                    subject="${plantuml.output}" match="$1" defaultvalue="-" override="true"/>
+    <echo message="${version.long}"/>
     <echo message="v${version.short}"/>
     <echo message="v${version.short}" file="resources/version.txt"/>
   </target>
