@@ -28,9 +28,10 @@
   </target>
 
   <target name="jar:update" description="Download latest version of PlantUML">
-    <delete file="bin/plantuml.jar"/>
-    <httpget url="https://sourceforge.net/projects/plantuml/files/latest/download?source=typ_redirect"
-             dir="bin" filename="plantuml.jar" followRedirects="true"/>
+    <delete file="bin/plantuml.jar" failonerror="true"/>
+    <exec executable="php" checkreturn="true" passthru="true">
+        <arg file="resources/download.php"/>
+    </exec>
   </target>
 
   <target name="jar:version" description="Retrieve current PlantUML version">
