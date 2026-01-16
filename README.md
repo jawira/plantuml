@@ -4,7 +4,7 @@ PlantUML integration
 Provides [PlantUML](http://plantuml.com/) integration: **plantuml executable** and **plantuml.jar**.
 
 <!--version:start-->
-PlantUML Version 1.2025.10
+PlantUML Version 1.2026.0
 <!--version:end-->
 
 [![Packagist Version](https://img.shields.io/packagist/v/jawira/plantuml?style=for-the-badge)](https://packagist.org/packages/jawira/plantuml)
@@ -58,15 +58,15 @@ Checksum
 --------
 
 <!--version:start-->
-PlantUML Version 1.2025.10
+PlantUML Version 1.2026.0
 <!--version:end-->
 
 File: [bin/plantuml.jar](bin/plantuml.jar)
 
 | Algorithm | Checksum                                                                  |
 | --------- | ------------------------------------------------------------------------- |
-| md5       | <!--md5:start-->5ec3e9f1419fdf1d0bc9ee3a8ba5375d<!--md5:end-->            |
-| sha1      | <!--sha1:start-->041ae2dba13c0e31ce4edcd03f41f1a6a1496b37<!--sha1:end-->  |
+| md5       | <!--md5:start-->6dbecd36be45d1fb2dc851adf455f050<!--md5:end-->            |
+| sha1      | <!--sha1:start-->56ba06010b78ea50e5cd21040fd763d662ace603<!--sha1:end-->  |
 
 ***
 
